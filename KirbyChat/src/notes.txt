@@ -1,0 +1,10 @@
+serverlistenport
+clientlistenport
+username
+passwordhash
+permissionlevel- user, admin
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Name
+PasswordHash
+Timestamped messages(up to 10000)
