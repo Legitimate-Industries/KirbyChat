@@ -73,7 +73,11 @@ public class KirbyServer implements Runnable{
     
     
     public static void main(String args[])throws Exception{
-        
+        System.out.println(User.toHash("kirby"));
+        System.out.println(User.toHash("kirbx"));
+        System.out.println(User.toHash("sirby"));
+        System.out.println(User.toHash("neesama"));
+        System.out.println(User.toHash("asdsdfw jfqi ofiqo"));
         
     }
     
@@ -93,6 +97,10 @@ class User{//<editor-fold>
     public static String toHash(String toHash){
         String s;
         char[] arr = new char[10];
+        for(int x=0;x<arr.length;x++){
+            arr[x]=(char)((Math.sin(x%2)*x)%26);
+        }
+        
         for(int x=0;x<toHash.length();x++){
             arr[x%10]=(char) (toHash.charAt(x)+(char)5);
             for(int y=9;y>=0;y--){
