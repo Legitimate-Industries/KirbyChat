@@ -18,7 +18,6 @@ public class KirbyServer implements Runnable{
     
     private boolean wannaRun=true;
     
-    
     public KirbyServer(int sl,int cl)throws Exception{
         serverlisten=sl;
         clientlisten=cl;
