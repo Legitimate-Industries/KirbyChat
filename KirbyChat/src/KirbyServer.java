@@ -96,7 +96,7 @@ class User{//<editor-fold>
         for(int x=0;x<toHash.length();x++){
             arr[x%10]=(char) (toHash.charAt(x)+(char)5);
             for(int y=9;y>=0;y--){
-                arr[y]+=arr[x%10];
+                arr[y]+=(int)(Math.sin(arr[x%10])*arr[x%10]);
                 arr[y]%=26;
             }
             arr[x%10]%=26;
