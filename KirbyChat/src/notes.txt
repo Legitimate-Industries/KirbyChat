@@ -1,3 +1,4 @@
+Userdata.dat
 serverlistenport
 clientlistenport
 username
@@ -5,6 +6,7 @@ passwordhash
 permissionlevel- user, admin
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+roomdata.dat
 Name
 PasswordHash
 Timestamped messages(up to 10000)

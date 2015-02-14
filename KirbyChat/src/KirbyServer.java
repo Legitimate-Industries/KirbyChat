@@ -37,21 +37,21 @@ public class KirbyServer implements Runnable{
             //users.add(new User(yo.nextLine(),yo.nextLine(),Integer.parseInt(yo.nextLine())));
             //map.put(users.get(users.size()-1).username,users.get(users.size()-1));
         }
+        yo = new Scanner(g);
+        while(yo.hasNextLine()){
+            
+        }
         
         
     }
     
     
-    
     @Override
     public void run(){
         while(wannaRun){
+    
             
-            
-            
-        }
-        
-        
+        }              
     }
     
     public void stop(){
@@ -59,8 +59,7 @@ public class KirbyServer implements Runnable{
         
         
     }
-    
-    
+     
     public static Timestamp stamp(){
         return new Timestamp(new Date().getTime());
     }
@@ -85,131 +84,4 @@ public class KirbyServer implements Runnable{
     
     
     
-}
-class User{//<editor-fold>
-    String username,passwordHash;
-    int accesslevel;
-    transient String ip;
-    boolean online=false;
-    
-    public static int USER=0,ADMIN=1;
-    
-    public static String toHash(String toHash){
-        String s;
-        char[] arr = new char[10];
-        for(int x=0;x<arr.length;x++){
-            arr[x]=(char)((Math.sin(x%2)*x)%26);
-        }
-        
-        for(int x=0;x<toHash.length();x++){
-            arr[x%10]=(char) (toHash.charAt(x)+(char)5);
-            for(int y=9;y>=0;y--){
-                arr[y]+=(int)(Math.sin(arr[x%10])*arr[x%10]);
-                arr[y]%=26;
-            }
-            arr[x%10]%=26;
-            
-        }
-        for(int a=0;a<arr.length;a++){
-            arr[a]+='A';
-        }
-        s=new String(arr);
-        return s;
-    }
-    
-    
-    public User(String username,String passwordHash,int accesslevel){
-        this.username=username;
-        this.passwordHash=passwordHash;
-        this.accesslevel=accesslevel;
-    }
-    
-    public boolean login(String ip,String passwordHash){
-        if(online||!passwordHash.equals(this.passwordHash))
-            return false;
-        this.ip=ip;
-        return online=true;
-    }
-    
-    public boolean logoff(){
-        if(!online)
-            return false;
-        ip="";
-        return !(online=false);
-    }
-}//</editor-fold>
-
-class ChatRoom implements Runnable{
-    String name,passwordHash;
-    List<User> myParticipants=new ArrayList<>();
-    List<ChatMessage> messages = new ArrayList<>();
-    
-    private boolean wannaRun=true;
-    //KirbyServer master;
-    
-    public ChatRoom(String name,String passwordHash,String... messages){
-        this.name=name;
-        this.passwordHash=passwordHash;
-        if(messages.length!=0){
-            for(String s:messages)
-                this.messages.add(new ChatMessage(s));
-        }
-        //this.master=master;
-        
-    }
-    
-    @Override
-    public void run(){
-        while(wannaRun){
-            
-        }
-    }
-    
-    public void stop(){
-        
-        wannaRun=false;
-    }
-    
-
-}
-
-class ChatMessage{
-    String timestamp;
-    String sender;
-    String message;
-    public ChatMessage(String ts,String sender,String msg){
-        timestamp=ts;
-        this.sender=sender;
-        message=msg;
-    }
-    
-    public ChatMessage(String source){
-        String[] split = source.split("::");
-        timestamp=split[0];
-        sender=split[1];
-        for(int x=2;x<split.length;x++)
-            message+=split[x];
-    }
-    
-    public String encrypted(String hash){
-        String s = "";
-        String y = toString();
-        for(int x=0;x<y.length();x++){
-            s+=y.charAt(x)+hash.charAt(x%hash.length());
-        }
-        return s;
-    }
-    
-    public static String decrypted(String hash,String key){
-        String s = "";
-        for(int x=0;x<hash.length();x++){
-            s+=hash.charAt(x)-key.charAt(x%key.length());
-        }
-        return s;
-    }
-    
-    @Override
-    public String toString(){
-        return timestamp+"::"+sender+"::"+message;
-    }
 }

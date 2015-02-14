@@ -14,8 +14,8 @@ public class Main {
         Scanner yo = new Scanner(System.in);
         System.out.print("Old or new server: ");
       if(yo.nextLine().equalsIgnoreCase("old")){
-          k=new KirbyServer(new File("userdata"),
-                            new File("roomdata"));
+          k=new KirbyServer(new File("userdata.dat"),
+                            new File("roomdata.dat"));
       }  
       else{
           System.out.print("Server receive and send ports: ");
